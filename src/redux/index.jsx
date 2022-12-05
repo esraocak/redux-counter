@@ -1,19 +1,13 @@
-const initialState ={
-    counter:0,
-};
+import { legacy_createStore as createStore, combineReducers } from "redux";
+import counterReducer from "./reducers/counterReducer";
 
-const reducer = (state = initialState,action) => {
-    switch (action.type) {
-        case "INCREMENT":
-            return {counter : state.counter + 1 }
-        case "DECREMENT":
-            return {counter : state.counter - 1 }
-        case "CLEAR":
-        return initialState;
-        default:
-            return state;
-    }
 
-}
-export default reducer;
+const rootReducer = combineReducers ({
+    count: counterReducer,
+    
+    
+
+});
+
+export const store = createStore (rootReducer);
 
